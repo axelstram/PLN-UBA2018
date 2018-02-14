@@ -1,5 +1,7 @@
 # https://docs.python.org/3/library/collections.html
 from collections import defaultdict
+from functools import reduce
+from math import log, inf
 import math
 
 
@@ -111,11 +113,34 @@ class NGram(LanguageModel):
 
         sent -- the sentence as a list of tokens.
         """
-        # WORK HERE!!
+
+        for i in range(self._n - 1):
+            sent = ['<s>'] + sent
+
+        sent.append('</s>')
+
+        probs = []
+
+        for idx, token in enumerate(sent):
+            next_token = None
+
+            for i in range(self._n - 1):
+                next_token = sent[(idx + i + 1) % len(sent)]
+                probs.append(self.cond_prob(next_token, prev_tokens=(token,)))
+
+            if next_token is None:
+                probs.append(self.cond_prob(token))
+
+        return reduce(lambda x, y: x * y, probs, 1)
 
     def sent_log_prob(self, sent):
         """Log-probability of a sentence.
 
         sent -- the sentence as a list of tokens.
         """
-        # WORK HERE!!
+        prob = self.sent_prob(sent)
+
+        if prob == 0.0:
+            return -inf
+        else:    
+            return log(prob, 2)
