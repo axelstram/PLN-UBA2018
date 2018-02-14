@@ -49,10 +49,33 @@ class NGram(LanguageModel):
         self._n = n
 
         count = defaultdict(int)
-
-        # WORK HERE!!
-
         self._count = dict(count)
+        
+        for sent in sents:
+            for i in range(n-1):
+                sent = ['<s>'] + sent
+
+            sent.append('</s>')
+
+            for idx, token in enumerate(sent):
+
+                tokens_tuple = (token,)
+                
+                for j in range(n):
+                    if tokens_tuple not in self._count:
+                        print("tupla: " + str(tokens_tuple))
+                        self._count[tokens_tuple] = 1
+                    else:
+                        print("tupla: " + str(tokens_tuple))
+                        self._count[tokens_tuple] += 1
+
+                    next_token = sent[(idx + j + 1) % len(sent)]
+                    tokens_tuple += (next_token,)
+
+            
+        if n == 1:
+            self._count[()] = sum(list(self._count.values()))
+        
 
     def count(self, tokens):
         """Count for an n-gram or (n-1)-gram.

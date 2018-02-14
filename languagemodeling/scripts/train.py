@@ -17,8 +17,10 @@ from docopt import docopt
 import pickle
 
 from nltk.corpus import gutenberg
+from nltk.corpus import PlaintextCorpusReader
+from nltk.tokenize import RegexpTokenizer
 
-from languagemodeling.ngram import NGram
+#from languagemodeling.ngram import NGram
 # from languagemodeling.ngram import NGram, AddOneNGram, InterpolatedNGram
 
 
@@ -30,11 +32,22 @@ from languagemodeling.ngram import NGram
 
 
 if __name__ == '__main__':
-    opts = docopt(__doc__)
+    #opts = docopt(__doc__)
 
     # load the data
-    # WORK HERE!! LOAD YOUR TRAINING CORPUS
-    sents = gutenberg.sents(['austen-emma.txt', 'austen-sense.txt'])
+    pattern = r'''(?x)    
+    (?:\d{1,3}(?:\.\d{3})+)
+    | (?:[Ss]r\.|[Ss]ra\.|art\.) 
+    | (?:[A-Z]\.)+       
+    | \w+(?:-\w+)*        
+    | \$?\d+(?:\.\d+)?%?  
+    | \.\.\.            
+    | [][.,;"'?():-_`]  
+    '''
+
+    tokenizer = RegexpTokenizer(pattern)
+    corpus = PlaintextCorpusReader('.', 'ML.txt', word_tokenizer=tokenizer)
+    sents = corpus.sents()
 
     # train the model
     n = int(opts['-n'])
