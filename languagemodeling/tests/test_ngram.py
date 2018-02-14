@@ -57,30 +57,30 @@ class TestNGram(TestCase):
             ('salmón', '.'): 1,
         }
         for gram, c in counts.items():
-            print(gram)
             self.assertEqual(ngram.count(gram), c)
 
-    # def test_cond_prob_1gram(self):
-    #     ngram = NGram(1, self.sents)
+    def test_cond_prob_1gram(self):
+        ngram = NGram(1, self.sents)
 
-    #     probs = {
-    #         'pescado': 1 / 12.0,
-    #         'come': 2 / 12.0,
-    #         'salame': 0.0,
-    #     }
-    #     for token, p in probs.items():
-    #         self.assertAlmostEqual(ngram.cond_prob(token), p)
+        probs = {
+            'pescado': 1 / 12.0,
+            'come': 2 / 12.0,
+            'salame': 0.0,
+        }
+        for token, p in probs.items():
+            print(token)
+            self.assertAlmostEqual(ngram.cond_prob(token), p)
 
-    # def test_cond_prob_2gram(self):
-    #     ngram = NGram(2, self.sents)
+    def test_cond_prob_2gram(self):
+        ngram = NGram(2, self.sents)
 
-    #     probs = {
-    #         ('pescado', 'come'): 0.5,
-    #         ('salmón', 'come'): 0.5,
-    #         ('salame', 'come'): 0.0,
-    #     }
-    #     for (token, prev), p in probs.items():
-    #         self.assertAlmostEqual(ngram.cond_prob(token, (prev,)), p)
+        probs = {
+            ('pescado', 'come'): 0.5,
+            ('salmón', 'come'): 0.5,
+            ('salame', 'come'): 0.0,
+        }
+        for (token, prev), p in probs.items():
+            self.assertAlmostEqual(ngram.cond_prob(token, (prev,)), p)
 
     # def test_sent_prob_1gram(self):
     #     ngram = NGram(1, self.sents)

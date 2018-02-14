@@ -63,18 +63,17 @@ class NGram(LanguageModel):
                 
                 for j in range(n):
                     if tokens_tuple not in self._count:
-                        print("tupla: " + str(tokens_tuple))
                         self._count[tokens_tuple] = 1
                     else:
-                        print("tupla: " + str(tokens_tuple))
                         self._count[tokens_tuple] += 1
 
                     next_token = sent[(idx + j + 1) % len(sent)]
-                    tokens_tuple += (next_token,)
+                    tokens_tuple = tokens_tuple + (next_token,)
 
-            
+        empty_tuple = ()    
+        
         if n == 1:
-            self._count[()] = sum(list(self._count.values()))
+            self._count[empty_tuple] = sum(list(self._count.values()))
         
 
     def count(self, tokens):
@@ -90,7 +89,22 @@ class NGram(LanguageModel):
         token -- the token.
         prev_tokens -- the previous n-1 tokens (optional only if n = 1).
         """
-        # WORK HERE!!
+        numerator = (token,)
+
+        if prev_tokens is not None:
+            numerator = prev_tokens + numerator
+
+        if self._n == 1:
+            denominator = ()
+        else:
+            denominator = prev_tokens
+
+        if self._count.get(denominator, 0) == 0 and self._n > 1:
+            return 0.0
+        else:
+            return self._count.get(numerator, 0) / self._count.get(denominator)
+
+
 
     def sent_prob(self, sent):
         """Probability of a sentence. Warning: subject to underflow problems.
