@@ -174,8 +174,15 @@ class AddOneNGram(NGram):
         super().__init__(n, sents)
 
         # compute vocabulary
-        self._voc = voc = set()
-        # WORK HERE!!
+        voc = set()
+
+        for tup, _ in self._count.items():
+            if tup is not ():
+                for elem in tup:
+                    if elem != '<s>':
+                        voc.add(elem)
+        
+        self._voc = voc
 
         self._V = len(voc)  # vocabulary size
 
@@ -196,7 +203,11 @@ class AddOneNGram(NGram):
             prev_tokens = ()
         assert len(prev_tokens) == n - 1
 
-        # WORK HERE!!
+        prev_tokens = tuple(prev_tokens)
+        tokens = prev_tokens + (token,)
+        tokens_count = float(self.count(tokens) + 1)
+        prev_count = self.count(prev_tokens) + self._V
+        return tokens_count / prev_count
 
 
 class InterpolatedNGram(NGram):

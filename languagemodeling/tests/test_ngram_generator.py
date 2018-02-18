@@ -61,43 +61,43 @@ class TestNGramGenerator(TestCase):
         }
 
         self.assertEqual(generator._probs, probs)
-        #self.assertEqual(generator._sorted_probs, sorted_probs)
+        self.assertEqual(generator._sorted_probs, sorted_probs)
 
-    # def test_generate_token(self):
-    #     ngram = NGram(2, self.sents)
-    #     generator = NGramGenerator(ngram)
+    def test_generate_token(self):
+        ngram = NGram(2, self.sents)
+        generator = NGramGenerator(ngram)
 
-    #     for i in range(100):
-    #         # after 'el' always comes 'gato':
-    #         token = generator.generate_token(('el',))
-    #         self.assertEqual(token, 'gato')
+        for i in range(100):
+            # after 'el' always comes 'gato':
+            token = generator.generate_token(('el',))
+            self.assertEqual(token, 'gato')
 
-    #         # after 'come' may come 'pescado' or 'salmón'
-    #         token = generator.generate_token(('come',))
-    #         self.assertTrue(token in ['pescado', 'salmón'])
+            # after 'come' may come 'pescado' or 'salmón'
+            token = generator.generate_token(('come',))
+            self.assertTrue(token in ['pescado', 'salmón'])
 
-    # def test_generate_sent_1gram(self):
-    #     ngram = NGram(1, self.sents)
-    #     generator = NGramGenerator(ngram)
+    def test_generate_sent_1gram(self):
+        ngram = NGram(1, self.sents)
+        generator = NGramGenerator(ngram)
 
-    #     voc = {'el', 'gato', 'come', 'pescado', '.', 'la', 'gata', 'salmón'}
+        voc = {'el', 'gato', 'come', 'pescado', '.', 'la', 'gata', 'salmón'}
 
-    #     for i in range(100):
-    #         sent = generator.generate_sent()
-    #         self.assertTrue(set(sent).issubset(voc))
+        for i in range(100):
+            sent = generator.generate_sent()
+            self.assertTrue(set(sent).issubset(voc))
 
-    # def test_generate_sent_2gram(self):
-    #     ngram = NGram(2, self.sents)
-    #     generator = NGramGenerator(ngram)
+    def test_generate_sent_2gram(self):
+        ngram = NGram(2, self.sents)
+        generator = NGramGenerator(ngram)
 
-    #     # all the possible generated sentences for 2-grams:
-    #     sents = [
-    #         'el gato come pescado .',
-    #         'la gata come salmón .',
-    #         'el gato come salmón .',
-    #         'la gata come pescado .',
-    #     ]
+        # all the possible generated sentences for 2-grams:
+        sents = [
+            'el gato come pescado .',
+            'la gata come salmón .',
+            'el gato come salmón .',
+            'la gata come pescado .',
+        ]
 
-    #     for i in range(100):
-    #         sent = generator.generate_sent()
-    #         self.assertTrue(' '.join(sent) in sents, sent)
+        for i in range(100):
+            sent = generator.generate_sent()
+            self.assertTrue(' '.join(sent) in sents, sent)

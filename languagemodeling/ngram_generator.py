@@ -9,6 +9,7 @@ class NGramGenerator(object):
         model -- n-gram model.
         """
         self._n = model._n
+        self._model = model
 
         # compute the probabilities
         probs = defaultdict(dict)
@@ -41,35 +42,52 @@ class NGramGenerator(object):
 
         self._probs = dict(probs)        
 
+        sorted_probs = {}
+
+        for k, v in probs.items():
+            sorted_probs[k] = sorted(v.items(),
+                                     key=lambda val: (val[1]),
+                                     reverse=True)
         # sort in descending order for efficient sampling
-        self._sorted_probs = sorted_probs = {}
-        # WORK HERE!!
+        self._sorted_probs = sorted_probs
+        
 
     def generate_sent(self):
         """Randomly generate a sentence."""
         n = self._n
 
         sent = []
-        prev_tokens = ['<s>'] * (n - 1)
-        token = self.generate_token(tuple(prev_tokens))
-        while token != '</s>':
-            # WORK HERE!!
-            pass
 
-        return sent
+        prev_tokens = ['<s>' for _ in range(self._model._n - 1)]
+        token = self.generate_token(prev_tokens)
+        sent = [token]
+        
+        while token != "</s>":
+            prev_tokens = (prev_tokens + [token])[1:]
+            token = self.generate_token(prev_tokens)
+            sent.append(token)
+
+        return sent[:-1]
+
 
     def generate_token(self, prev_tokens=None):
         """Randomly generate a token, given prev_tokens.
 
         prev_tokens -- the previous n-1 tokens (optional only if n = 1).
         """
-        n = self._n
-        if not prev_tokens:
+        n = self._model._n
+        if prev_tokens is None:
             prev_tokens = ()
-        assert len(prev_tokens) == n - 1
+        else:
+           prev_tokens = tuple(prev_tokens)
 
-        r = random.random()
-        probs = self._sorted_probs[prev_tokens]
-        # WORK HERE!!
+        generated_token = None
+        acum_prob = 0.0
+        
+        for (token, prob) in self._sorted_probs[prev_tokens]:
+            acum_prob += prob
+            if random.random() <= acum_prob:
+                generated_token = token
+                break
 
-        return token
+        return generated_token
