@@ -20,19 +20,18 @@ from nltk.corpus import gutenberg
 from nltk.corpus import PlaintextCorpusReader
 from nltk.tokenize import RegexpTokenizer
 
-#from languagemodeling.ngram import NGram
-# from languagemodeling.ngram import NGram, AddOneNGram, InterpolatedNGram
+from ngram import NGram, AddOneNGram, InterpolatedNGram
 
 
-# models = {
-#     'ngram': NGram,
-#     'addone': AddOneNGram,
-#     'inter': InterpolatedNGram,
-# }
+models = {
+    'ngram': NGram,
+    'addone': AddOneNGram,
+    'inter': InterpolatedNGram,
+}
 
 
 if __name__ == '__main__':
-    #opts = docopt(__doc__)
+    opts = docopt(__doc__)
 
     # load the data
     pattern = r'''(?x)    
@@ -49,11 +48,13 @@ if __name__ == '__main__':
     corpus = PlaintextCorpusReader('.', 'ML.txt', word_tokenizer=tokenizer)
     sents = corpus.sents()
 
+    training_sents = sents[:int(0.9*len(sents))]
+    test_sents = sents[int(0.9*len(sents)):]
+
     # train the model
     n = int(opts['-n'])
-    model = NGram(n, sents)
-    # model_class = models[opts['-m']]
-    # model = model_class(n, sents)
+    model_class = models[opts['-m']]
+    model = model_class(n, training_sents)
 
     # save it
     filename = opts['-o']
