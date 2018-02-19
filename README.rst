@@ -1,3 +1,5 @@
+Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron 
+
 Unigramas:
 
 - of , , to of ) : ) ) the . ) , . to a , . ( the is , . in to the ) the to of and ) the , , of of and . . of ,
