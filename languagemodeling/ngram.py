@@ -3,6 +3,8 @@ from collections import defaultdict
 from functools import reduce
 from math import log, inf
 import math
+import copy
+
 
 
 class LanguageModel(object):
@@ -201,7 +203,6 @@ class AddOneNGram(NGram):
         if not prev_tokens:
             # if prev_tokens not given, assume 0-uple:
             prev_tokens = ()
-        assert len(prev_tokens) == n - 1
 
         prev_tokens = tuple(prev_tokens)
         tokens = prev_tokens + (token,)
@@ -212,57 +213,63 @@ class AddOneNGram(NGram):
 
 class InterpolatedNGram(NGram):
 
-    def __init__(self, n, sents, gamma=None, addone=True):
+    def __init__(self, n, sents, gamma=None, addone=False):
 
+        self._n = n
         self._gamma = gamma
+        heldout_data = []
         if gamma is None:
             len_held_out = int(0.1 * len(sents))
-            development_data = sents[-len_held_out]
-            sents = sents[0:len_held_out+1]
-            self.gamma = self.gammaFromHeldOut(development_data)
-
+            heldout_data = sents[-len_held_out+1]
+            sents = sents[0:len_held_out + 1]
 
         models = []
         for i in range(1, n + 1):
             if addone:
-                models.append(AddOneNGram(i, sents))
+                models.append(AddOneNGram(i, copy.deepcopy(sents)))
             else:
-                models.append(NGram(i, sents))
+                models.append(NGram(i, copy.deepcopy(sents)))
 
         self._ngram_models = models
+
+        if gamma is None:
+            self._gamma = self.gammaFromHeldOut(heldout_data)
+
         super().__init__(n, sents)
 
-
+    def count(self, tokens):
+        ngramsize = len(tokens)
+        if ngramsize == 0:
+            ngramsize = 1
+        return self._ngram_models[ngramsize-1].count(tokens)
 
     def gammaFromHeldOut(self, data):
+
         #TODO
         return 1
 
-    def count(self, tokens):
-        return self._ngram_models[self._n-1].count(tokens)
-
     def cond_prob(self, token, prev_tokens=None):
-        cond_ml = []        # maximum likelihood estimators
-        lambdas = []        # calculo de lambdas
+        cond_probs = []        
+        lambdas = []        
         for i in range(0,self._n - 1):
             if prev_tokens is None:
                 prev_tokens_per_ngram = tuple()
             else:
                 prev_tokens_per_ngram = prev_tokens
 
-            cond_prob = self._ngram_models[self._n -i-1].cond_prob(token, prev_tokens_per_ngram)  #para cada modelo de ngramas calculo la condicional
+            cond_prob = self._ngram_models[self._n -i-1].cond_prob(token, prev_tokens_per_ngram)
             if cond_prob == -math.inf:
                 cond_prob = 0
-            cond_ml.append(cond_prob)
+            cond_probs.append(cond_prob)
 
             current_lambda = (1 - sum(lambdas)) * self._ngram_models[self._n -(i+1)].count(prev_tokens[i:]) / (self._ngram_models[self._n -(i+1)].count(prev_tokens[i:]) + self._gamma)
             lambdas.append(current_lambda)
 
-        cond_ml.append(self._ngram_models[0].cond_prob(token))
+        cond_probs.append(self._ngram_models[0].cond_prob(token))
         lambdas.append(1 - sum(lambdas))
 
-        prob = 0
-        for i in range(len(cond_ml)):
-            prob += lambdas[i] * cond_ml[i]
+        prob = 0.0
+        for i in range(len(cond_probs)):
+            prob += lambdas[i] * cond_probs[i]
 
         return prob
