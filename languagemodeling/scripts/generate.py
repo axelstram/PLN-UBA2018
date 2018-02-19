@@ -12,7 +12,7 @@ Options:
 from docopt import docopt
 import pickle
 
-from languagemodeling.ngram_generator import NGramGenerator
+from ngram_generator import NGramGenerator
 
 
 if __name__ == '__main__':
