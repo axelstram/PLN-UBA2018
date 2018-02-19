@@ -1,71 +1,37 @@
-Procesamiento de Lenguaje Natural - UBA 2018
-============================================
+Unigramas:
+
+- of , , to of ) : ) ) the . ) , . to a , . ( the is , . in to the ) the to of and ) the , , of of and . . of ,
+
+- the ) a ) the . . to the to , to to the ) , of ) , of ) is , a the ( , , (
+
+- ) . , you ) , , = ) to ( ) , ( . and it and ( a ) of a of , to ( to = ( ( ) the . , , ( . . ) , to ) a , . to . , the : ) the and the a to . a ) ( ) a . , . a . the ) . ) : a , the
 
 
-Instalación
------------
+Bigramas:
 
-1. Se necesita el siguiente software:
+- Figure 6-2 . , then you will get a bit of Machine Learning Project . , it to get the right , so the first . , but not to the model .
 
-   - Git
-   - Pip
-   - Python 3.4 o posterior
-   - TkInter
-   - Virtualenv
+- For example , but this case , you get a bit . , which will have the data and so it will see Chapter 1 , but this book : from 0 ) : you are also create the same size , you want to use TensorFlow cluster . 0 ) .
 
-   En un sistema basado en Debian (como Ubuntu), se puede hacer::
-
-    sudo apt-get install git python-pip python3 python3-tk virtualenv
-
-2. Crear y activar un nuevo
-   `virtualenv <http://virtualenv.readthedocs.org/en/latest/virtualenv.html>`_.
-   Recomiendo usar `virtualenvwrapper
-   <http://virtualenvwrapper.readthedocs.org/en/latest/install.html#basic-installation>`_.
-   Se puede instalar así::
-
-    sudo pip install virtualenvwrapper
-
-   Y luego agregando la siguiente línea al final del archivo ``.bashrc``::
-
-    [[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
-
-   Para crear y activar nuestro virtualenv::
-
-    mkvirtualenv --system-site-packages --python=/usr/bin/python3 pln
-
-3. Bajar el código::
-
-    git clone https://github.com/PLN-FaMAF/PLN-UBA2018.git
-
-4. Instalarlo::
-
-    cd PLN-UBA2018
-    pip install -r requirements.txt
+- In a training data is called a model is a , but you want to a TensorFlow
 
 
-Ejecución
----------
+Trigramas:
 
-1. Activar el entorno virtual con::
+- This gives us the optimal number of instances with millions of parameters in the training data .
+For example , if you are ready to train the system , called a deconvolutional layer , one per color chan nel .
 
-    workon pln
+- If your model , not the most common categories of ML systems : supervised versus unsupervised learning , the following code shows how to train the weights of the network to be pretty obvious that the classifier , but it will give it rewards any time it does not affect strat_train_set ) : X_batch , y : y_batch ) accuracy_score = accuracy .
 
-2. Correr el script que uno quiera. Por ejemplo::
+- For each neuron can be reused fairly efficiently in any way to evaluate a node s gini attribute measures its impur ity : a View from the MNIST images ( e . g . , the output gate .
 
-    python languagemodeling/scripts/train.py -h
+Cuatrigramas:
 
+- Chapter 13 : Convolutional Neural Networks
+The resulting RNN is represented in 2D , which makes it a multioutput classifier .
 
-Testing
--------
+- For each instance , and then we will pick action 0 with 70 probability , and action 1 with 30 probability .
 
-Correr nose::
+- However , the TensorFlow team is working on improving the dynamic placer
 
-    nosetests
-
-
-Chequear Estilo de Código
--------------------------
-
-Correr flake8 sobre el paquete o módulo que se desea chequear. Por ejemplo::
-
-    flake8 languagemodeling
+- The hyperparameter controlling the regularization strength of a Scikit-Learn LogisticRegression model is not alpha ( as in Batch GD ) or based on just one bit ( 0 )
