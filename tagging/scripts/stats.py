@@ -23,22 +23,42 @@ class POSStats:
         """
         # WORK HERE!!
         # COLLECT REQUIRED STATISTICS INTO DICTIONARIES.
+        #print(tagged_sents)
+
+        tokens = defaultdict(int)
+        tags = defaultdict(int)
+        total_num_of_sents = 0
+
+        for sent in tagged_sents:
+            total_num_of_sents += 1
+
+            for token, tag in sent:
+                tokens[token] += 1
+                tags[tag] += 1
+
+
+        self.total_num_of_sents = total_num_of_sents
+        self.tokens = tokens
+        self.tags = tags
 
     def sent_count(self):
         """Total number of sentences."""
         # WORK HERE!!
+        return self.total_num_of_sents
 
     def token_count(self):
         """Total number of tokens."""
         # WORK HERE!!
+        return sum(list(self.tokens.values()))
 
     def words(self):
         """Vocabulary (set of word types)."""
-        # WORK HERE!!
+        
 
     def word_count(self):
         """Vocabulary size."""
         # WORK HERE!!
+        return len(list(self.tokens.keys()))
 
     def word_freq(self, w):
         """Frequency of word w."""
@@ -62,6 +82,7 @@ class POSStats:
     def tag_count(self):
         """POS tagset size."""
         # WORK HERE!!
+        return len(list(self.tags.keys()))
 
     def tag_freq(self, t):
         """Frequency of tag t."""
