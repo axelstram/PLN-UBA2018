@@ -45,9 +45,6 @@ The resulting RNN is represented in 2D , which makes it a multioutput classifier
 
 
 
-En estos casos la perplexity obtenida fue de 1.67, 1.23, 1.20, 1.25 respectivamente.
-
-
 
 
 
