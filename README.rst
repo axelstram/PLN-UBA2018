@@ -66,4 +66,4 @@ Addone con n=4:
 
 
 
-En estos casos la perplexity obtenida fue de 1.2041, 1.1967, 1.1965 y 1.2403
+En estos casos la perplexity obtenida fue de 621.2041, 711.1967, 2821.1965 y 5945.2403
