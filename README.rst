@@ -1,6 +1,6 @@
 Informe
 
-Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron.
+Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron. Al ser un corpus limitado no se obtuvieron los mismos resultados que de haber utilizado uno mas grande como Gutenberg, sin embargo para valores de n grandes se obtuvieron oraciones con algo de sentido.
 
 -- Generación de modelos
 
