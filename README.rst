@@ -1,6 +1,6 @@
 Informe
 
-Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron 
+Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron.
 
 -- Generación de modelos
 
@@ -67,3 +67,21 @@ Addone con n=4:
 
 
 En estos casos la perplexity obtenida fue de 621.2041, 711.1967, 2821.1965 y 5945.2403
+
+
+
+Interpolación con n=2:
+
+- Figure 13-11 ) , and Random Forest classifier using Scikit-Learn and Random Forest " ] , so you may have a single graph , the learning curves are using Scikit-Learn and Servers
+
+
+Interpolación con n=3:
+
+- Let s see how to train an RNN , dropping each input connection is when you are asked to predict the next time you fetch an updated dataset .
+
+Interpolación con n=4:
+
+- In fact , Scikit-Learn s Perceptron class is equivalent to using an SGDClassifier with the following code pins all the variable names : for variable in tf . global_variables ( ) : it computes the exponential of every score , then normalizes them ( dividing by the standard deviation ).
+
+
+En estos casos la perplexity obtenida fue de 988.23, 1024.30 y 642.42
