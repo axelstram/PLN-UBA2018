@@ -23,57 +23,63 @@ class POSStats:
         """
         # WORK HERE!!
         # COLLECT REQUIRED STATISTICS INTO DICTIONARIES.
-        #print(tagged_sents)
 
         tokens = defaultdict(int)
         tags = defaultdict(int)
+        tags_to_words = defaultdict(lambda: defaultdict(int))
+        word_to_tags = defaultdict(set)
         total_num_of_sents = 0
 
         for sent in tagged_sents:
             total_num_of_sents += 1
 
-            for token, tag in sent:
-                tokens[token] += 1
+            for w, tag in sent:
+                tokens[w] += 1
                 tags[tag] += 1
-
+                tags_to_words[tag][w] += 1 
+                word_to_tags[w].add(tag)
 
         self.total_num_of_sents = total_num_of_sents
         self.tokens = tokens
         self.tags = tags
+        self.tags_to_words = tags_to_words
+        self.word_to_tags = word_to_tags
 
     def sent_count(self):
         """Total number of sentences."""
-        # WORK HERE!!
         return self.total_num_of_sents
 
     def token_count(self):
         """Total number of tokens."""
-        # WORK HERE!!
         return sum(list(self.tokens.values()))
 
     def words(self):
         """Vocabulary (set of word types)."""
-        
+        return self.tokens.keys()        
 
     def word_count(self):
         """Vocabulary size."""
-        # WORK HERE!!
         return len(list(self.tokens.keys()))
 
     def word_freq(self, w):
         """Frequency of word w."""
-        # WORK HERE!!
+        return self.tokens[w]
 
     def unambiguous_words(self):
         """List of words with only one observed POS tag."""
-        # WORK HERE!!
+        return self.ambiguous_words(1)
 
     def ambiguous_words(self, n):
         """List of words with n different observed POS tags.
 
         n -- number of tags.
         """
-        # WORK HERE!!
+        ambiguous_words = set()
+        for k, v in self.word_to_tags.items():
+            if len(v) == n:
+                ambiguous_words.add(k)
+                
+        return list(ambiguous_words)
 
     def tags(self):
         """POS Tagset."""
@@ -81,16 +87,15 @@ class POSStats:
 
     def tag_count(self):
         """POS tagset size."""
-        # WORK HERE!!
         return len(list(self.tags.keys()))
 
     def tag_freq(self, t):
         """Frequency of tag t."""
-        # WORK HERE!!
+        return self.tags[t]
 
     def tag_word_dict(self, t):
         """Dictionary of words and their counts for tag t."""
-        return dict(self._tcount[t])
+        return dict(self.tags_to_words[t])
 
 
 if __name__ == '__main__':
