@@ -1,6 +1,10 @@
+#Informe
+
 Como corpus se utilizo el libro "Hands-On Machine Learning with Scikit-Learn and TensorFlow" de Aurelien Geron 
 
-Unigramas:
+## Generación de modelos
+
+# Ngramas con n=1:
 
 - of , , to of ) : ) ) the . ) , . to a , . ( the is , . in to the ) the to of and ) the , , of of and . . of ,
 
@@ -9,7 +13,7 @@ Unigramas:
 - ) . , you ) , , = ) to ( ) , ( . and it and ( a ) of a of , to ( to = ( ( ) the . , , ( . . ) , to ) a , . to . , the : ) the and the a to . a ) ( ) a . , . a . the ) . ) : a , the
 
 
-Bigramas:
+# Ngramas con n=2:
 
 - Figure 6-2 . , then you will get a bit of Machine Learning Project . , it to get the right , so the first . , but not to the model .
 
@@ -18,7 +22,7 @@ Bigramas:
 - In a training data is called a model is a , but you want to a TensorFlow
 
 
-Trigramas:
+# Ngramas con n=3:
 
 - This gives us the optimal number of instances with millions of parameters in the training data .
 For example , if you are ready to train the system , called a deconvolutional layer , one per color chan nel .
@@ -27,7 +31,7 @@ For example , if you are ready to train the system , called a deconvolutional la
 
 - For each neuron can be reused fairly efficiently in any way to evaluate a node s gini attribute measures its impur ity : a View from the MNIST images ( e . g . , the output gate .
 
-Cuatrigramas:
+# Ngramas con n=4:
 
 - Chapter 13 : Convolutional Neural Networks
 The resulting RNN is represented in 2D , which makes it a multioutput classifier .
