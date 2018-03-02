@@ -39,12 +39,12 @@ class BaselineTagger:
         default_tag -- tag for unknown words.
         """
         self.word_to_most_freq_tag = word_to_most_freq_tag = defaultdict(str)
-        self.word_to_tags = word_to_tags = defaultdict(lambda: defaultdict(int))
+        self.word_to_tags = word_to_tags = defaultdict(dict)
         self.default_tag = default_tag
         
         for sent in tagged_sents:
             for word, tag in sent:
-                word_to_tags[word][tag] += 1
+                word_to_tags[word][tag] = word_to_tags.get(word, {}).get(tag, 0) + 1
         
         for word, tags in word_to_tags.items():
             most_freq_tag = max(tags.items(), key=lambda x: x[1])[0]

@@ -24,7 +24,7 @@ class POSStats:
 
         tokens_dict = defaultdict(int)
         tags_dict = defaultdict(int)
-        tags_to_words = defaultdict(lambda: defaultdict(int))
+        tags_to_words = defaultdict(dict)
         word_to_tags = defaultdict(set)
         total_num_of_sents = 0
 
@@ -34,7 +34,7 @@ class POSStats:
             for w, tag in sent:
                 tokens_dict[w] += 1
                 tags_dict[tag] += 1
-                tags_to_words[tag][w] += 1 
+                tags_to_words[tag][w] = tags_to_words.get(tag, {}).get(w, 0) + 1 
                 word_to_tags[w].add(tag)
 
 
