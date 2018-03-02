@@ -52,9 +52,9 @@ Ejercicio 2:
 
 - BadBaselineTagger:
 
-Global Score: 12.65 %
-Score sobre palabras desconocidas: 0.00%
-Score sobre palabras conocidas: 12.65%
+* Global Score: 12.65 %
+* Score sobre palabras desconocidas: 0.00%
+* Score sobre palabras conocidas: 12.65%
 
 Matriz de confusión
 
@@ -76,9 +76,9 @@ Matriz de confusión
 
 - BaselineTagger:
 
-Global Score: 87.57%
-Score sobre palabras desconocidas: 95.25%
-Score sobre palabras conocidas: 18.01%
+* Global Score: 87.57%
+* Score sobre palabras desconocidas: 95.25%
+* Score sobre palabras conocidas: 18.01%
 
 Matriz de confusión
 
