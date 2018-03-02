@@ -100,3 +100,5 @@ Matriz de confusión
 
 Ejercicio 3:
 ============
+
+Se implementaron las clases "NPrevTags" y "PrevWord", y las funciones "word_lower", "word_istitle", "word_isupper", "word_isdigit", en el archivo features.py
