@@ -105,18 +105,25 @@ class MEMM:
 
         sent -- the sentence.
         """
-        # WORK HERE!!
+        tags = []
+        prev = ('<s>', '<s>')
+        for i in range(len(sent)):
+            tag = self.tag_history(History(sent, prev, i))
+            prev = (prev + (tag,))[1:]
+            tags.append(tag)
+            
+        return tags
 
     def tag_history(self, h):
         """Tag a history.
 
         h -- the history.
         """
-        # WORK HERE!!
+        return self._pipeline.predict([h])[0]
 
     def unknown(self, w):
         """Check if a word is unknown for the model.
 
         w -- the word.
         """
-        # WORK HERE!!
+        return w not in self._known_words
