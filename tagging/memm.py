@@ -27,8 +27,23 @@ class MEMM:
         clf -- classifying model, one of 'svm', 'maxent', 'mnb' (default: 'svm').
         """
         # 1. build the pipeline
-        # WORK HERE!!
-        self._pipeline = pipeline = None
+        self.n = n
+        basic_features = [word_lower, word_istitle, word_isupper, word_isdigit]
+        features = basic_features
+
+        for f in [PrevWord, NextWord]:
+            for feature in basic_features:
+                features = features + [f(feature)]           
+        
+        features = features + [NPrevTags(i) for i in range(1,n)]
+
+        v = Vectorizer(features)
+        
+        self._pipeline = pipeline = Pipeline([
+            ('v', v),
+            ('clf', classifiers[clf]())
+        ])
+
 
         # 2. train it
         print('Training classifier...')
@@ -37,7 +52,13 @@ class MEMM:
         pipeline.fit(list(X), list(y))
 
         # 3. build known words set
-        # WORK HERE!!
+        known_words = set()
+        for sent in tagged_sents:
+            for word, _ in sent:
+                known_words.add(word)
+
+        self._known_words = known_words
+
 
     def sents_histories(self, tagged_sents):
         """

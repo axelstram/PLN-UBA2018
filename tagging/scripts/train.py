@@ -29,7 +29,7 @@ from tagging.baseline import BaselineTagger, BadBaselineTagger
 models = {
     'badbase': BadBaselineTagger,
     'base': BaselineTagger,
-    # 'memm': MEMM,
+    'memm': MEMM,
 }
 
 
@@ -46,16 +46,16 @@ if __name__ == '__main__':
     model = model_class(sents)
 
     # USEFUL FOR MODELS WITH PARAMETERS:
-    # if opts['-n']:
-    #     n = int(opts['-n'])
-    #     if opts['-m'] == 'memm':
-    #         clf = opts['-c']
-    #         model = model_class(n, sents, clf=clf)
-    #     else:
-    #         model = model_class(n, sents)
-    # else:
-    #     # only for baselines
-    #     model = model_class(sents)
+    if opts['-n']:
+        n = int(opts['-n'])
+        if opts['-m'] == 'memm':
+            clf = opts['-c']
+            model = model_class(n, sents, clf=clf)
+        else:
+            model = model_class(n, sents)
+    else:
+        # only for baselines
+        model = model_class(sents)
 
     # save it
     filename = opts['-o']
