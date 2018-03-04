@@ -102,3 +102,31 @@ Ejercicio 3:
 ============
 
 Se implementaron las clases "NPrevTags" y "PrevWord", y las funciones "word_lower", "word_istitle", "word_isupper", "word_isdigit", en el archivo features.py
+
+
+Ejercicio 4:
+============
+
+Los experimentos se corrieron en una CPU Intel i5-4690
+
+**Clasificador "LinearSVC"**:
+
+- n = 1:
+* Accuracy: 94.11% / 0.00% / 94.11%
+* Tiempo de entrenamiento: 4:32 mins
+* Tiempo de evaluación: 24 segs
+
+- n = 2:
+* Accuracy: 92.43% / 0.00% / 92.43%
+* Tiempo de entrenamiento: 5:40 mins
+* Tiempo de evaluación: 25 segs
+
+- n = 3:
+* Accuracy: 92.27% / 0.00% / 92.27%
+* Tiempo de entrenamiento: 6:52 mins
+* Tiempo de evaluación: 25 segs
+
+- n = 4:
+* Accuracy: 92.13% / 0.00% / 92.13%
+* Tiempo de entrenamiento: 9:40 mins
+* Tiempo de evaluación: 26 segs
