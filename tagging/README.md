@@ -107,26 +107,72 @@ Se implementaron las clases "NPrevTags" y "PrevWord", y las funciones "word_lowe
 Ejercicio 4:
 ============
 
-Los experimentos se corrieron en una CPU Intel i5-4690
-
 **Clasificador "LinearSVC"**:
 
-- n = 1:
-* Accuracy: 94.11% / 0.00% / 94.11%
+n = 1:
 * Tiempo de entrenamiento: 4:32 mins
 * Tiempo de evaluación: 24 segs
+* Accuracy: 94.11% / 0.00% / 94.11%
 
-- n = 2:
-* Accuracy: 92.43% / 0.00% / 92.43%
+n = 2:
 * Tiempo de entrenamiento: 5:40 mins
 * Tiempo de evaluación: 25 segs
+* Accuracy: 92.43% / 0.00% / 92.43%
 
-- n = 3:
-* Accuracy: 92.27% / 0.00% / 92.27%
+n = 3:
 * Tiempo de entrenamiento: 6:52 mins
 * Tiempo de evaluación: 25 segs
+* Accuracy: 92.27% / 0.00% / 92.27%
 
-- n = 4:
-* Accuracy: 92.13% / 0.00% / 92.13%
+n = 4:
 * Tiempo de entrenamiento: 9:40 mins
 * Tiempo de evaluación: 26 segs
+* Accuracy: 92.13% / 0.00% / 92.13%
+
+
+
+**Clasificador "LogisticRegression"**:
+
+n = 1:
+* Tiempo de entrenamiento: 9:40 mins
+* Tiempo de evaluación: 23 segs
+* Accuracy: 91.69% / 0.00% / 91.69%
+
+n = 2:
+* Tiempo de entrenamiento: 12:15 mins
+* Tiempo de evaluación: 25 segs
+* Accuracy: 90.20% / 0.00% / 90.20%
+
+n = 3:
+* Tiempo de entrenamiento: 16:01 mins
+* Tiempo de evaluación: 29 segs
+* Accuracy: 89.58% / 0.00% / 89.58%
+
+n = 4:
+* Tiempo de entrenamiento: 19:38 mins
+* Tiempo de evaluación: 32 segs
+* Accuracy: 89.48% / 0.00% / 89.48%
+
+
+
+**Clasificador "MultinomialNB"**:
+
+n = 1:
+* Tiempo de entrenamiento: 55 segs
+* Tiempo de evaluación: 1:01 horas
+* Accuracy: 74.85% / 0.00% / 74.85%
+
+n = 2:
+* Tiempo de entrenamiento: 1:02 mins
+* Tiempo de evaluación: 1:03 horas
+* Accuracy: 76.73% / 0.00% / 76.73%
+
+n = 3:
+* Tiempo de entrenamiento: 1:03 mins
+* Tiempo de evaluación: 1:06 horas
+* Accuracy: 78.79% / 0.00% / 78.79%
+
+n = 4:
+* Tiempo de entrenamiento: 1:07 mins
+* Tiempo de evaluación: 1:08 horas
+* Accuracy: 80.50% / 0.00% / 80.50%
