@@ -1,7 +1,7 @@
 """Draw a learning curve for a Sentiment Analysis model.
 
 Usage:
-  curve.py [-m <model>] [-c <clf>]
+  curve.py [-m <model>] [-c <clf>] [-p <pipeline>]
   curve.py -h | --help
 
 Options:
@@ -12,6 +12,7 @@ Options:
                   maxent: Maximum Entropy (i.e. Logistic Regression)
                   svm: Support Vector Machine
                   mnb: Multinomial Bayes
+  -p <pipeline> pipeline to use in the classifier
   -h --help     Show this screen.
 """
 from docopt import docopt
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     # train model
     model_type = opts['-m']
     if model_type == 'clf':
-        model = models[model_type](clf=opts['-c'])
+        model = models[model_type](clf=opts['-c'], pipeline=opts['-p'])
     else:
         model = models[model_type]()  # baseline
     evaluator = Evaluator()

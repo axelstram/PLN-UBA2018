@@ -11,21 +11,41 @@ classifiers = {
     'svm': LinearSVC,
 }
 
-
-class SentimentClassifier(object):
-
-    def __init__(self, clf='svm'):
-        """
-        clf -- classifying model, one of 'svm', 'maxent', 'mnb' (default: 'svm').
-        """
-        self._clf = clf
-        self._pipeline = pipeline = Pipeline([
+def createDefaultPipeline(clf):
+        return Pipeline([
             ('vect', CountVectorizer()),
             ('clf', classifiers[clf]()),
         ])
+
+def createBinaryCountPipeline(clf):
+        return Pipeline([
+            ('vect', CountVectorizer(binary=True)),
+            ('clf', classifiers[clf]()),
+        ])
+
+
+class SentimentClassifier(object):
+
+    def __init__(self, clf='svm', pipeline='default'):
+        """
+        clf -- classifying model, one of 'svm', 'maxent', 'mnb' (default: 'svm').
+        pipeline -- type of pipeline to use: 'default', 'binary'
+
+        """
+        self._clf = clf
+        self._pipeline = None
+
+        if pipeline == 'default':
+            self._pipeline = createDefaultPipeline(clf)
+        elif pipeline == 'binary':
+            self._pipeline = createBinaryCountPipeline(clf)
+        
+
 
     def fit(self, X, y):
         self._pipeline.fit(X, y)
 
     def predict(self, X):
         return self._pipeline.predict(X)
+
+    
