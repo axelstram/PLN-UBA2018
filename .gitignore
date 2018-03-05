@@ -1,2 +1,4 @@
-sentiment/TASS/
+TASS/
 ancora/
+model
+sentiment/__*

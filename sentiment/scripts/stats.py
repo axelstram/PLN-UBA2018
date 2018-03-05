@@ -5,8 +5,8 @@ from collections import defaultdict
 
 
 if __name__ == '__main__':
-	interTASSReader = InterTASSReader('sentiment/TASS/InterTASS/tw_faces4tassTrain1000rc.xml')
-	generalTASSReader = GeneralTASSReader('sentiment/TASS/GeneralTASS/general-tweets-train-tagged.xml')
+	interTASSReader = InterTASSReader('TASS/InterTASS/tw_faces4tassTrain1000rc.xml')
+	generalTASSReader = GeneralTASSReader('TASS/GeneralTASS/general-tweets-train-tagged.xml')
 
 	print('InterTASS statistics:')
 	print('====================================')
