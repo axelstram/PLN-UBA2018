@@ -16,6 +16,9 @@ classifiers = {
     'svm': LinearSVC,
 }
 
+tweetTokenizer = TweetTokenizer()    
+spanishStemmer = SpanishStemmer()
+
 
 def createDefaultPipeline(clf):
         return Pipeline([
@@ -35,23 +38,18 @@ def createStopwordsPipeline(clf):
             ('clf', classifiers[clf]()),
         ])
 
-def createTweetTokenizerPipeline(clf):
-        tweetTokenizer = TweetTokenizer()    
-        spanishStemmer = SpanishStemmer()
 
-        def tweet_tokenizer(sentence):
+def tweet_tokenizer(sentence):
             return [spanishStemmer.stem(token) for token in tweetTokenizer.tokenize(sentence)]
 
+def createTweetTokenizerPipeline(clf):
         return Pipeline([
             ('vect', CountVectorizer(tokenizer=tweet_tokenizer)),
             ('clf', classifiers[clf]()),
         ])
 
 
-def createNormalizationPipeline(clf):
-        tweetTokenizer = TweetTokenizer()    
-
-        def normalizator(sentence):
+def normalizator(sentence):
             urls = r'(?:https?\://t.co/[\w]+)'
             mentions = r'(?:@[^\s]+)'
             sentence = re.sub(urls, '', sentence)
@@ -64,7 +62,7 @@ def createNormalizationPipeline(clf):
 
             return sentence
 
-
+def createNormalizationPipeline(clf):
         return Pipeline([
             ('vect', CountVectorizer(tokenizer=normalizator)),
             ('clf', classifiers[clf]()),
@@ -76,11 +74,10 @@ class SentimentClassifier(object):
     def __init__(self, clf='svm', pipeline='default'):
         """
         clf -- classifying model, one of 'svm', 'maxent', 'mnb' (default: 'svm').
-        pipeline -- type of pipeline to use: 'default', 'binary', 'stopwords', 'tweet'
+        pipeline -- type of pipeline to use: 'default', 'binary', 'stopwords', 'tweet' or 'normalization'
 
         """
         self._clf = clf
-        self._pipeline = None
 
         if pipeline == 'default':
             self._pipeline = createDefaultPipeline(clf)
@@ -90,7 +87,7 @@ class SentimentClassifier(object):
             self._pipeline = createStopwordsPipeline(clf)
         elif pipeline == 'tweet':
             self._pipeline = createTweetTokenizerPipeline(clf)
-        elif pipeline == 'normalize':
+        elif pipeline == 'normalization':
             self._pipeline = createNormalizationPipeline(clf)
 
 

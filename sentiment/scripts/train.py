@@ -1,7 +1,7 @@
 """Train a Sentiment Analysis model.
 
 Usage:
-  train.py [-m <model>] [-c <clf>] -o <file>
+  train.py [-m <model>] [-c <clf>] [-p <pipeline>] -o <file>
   train.py -h | --help
 
 Options:
@@ -12,7 +12,8 @@ Options:
                   maxent: Maximum Entropy (i.e. Logistic Regression)
                   svm: Support Vector Machine
                   mnb: Multinomial Bayes
-  -o <file>    Output model file.
+  -p <pipeline> type of pipeline to use: 'default', 'binary', 'stopwords', 'tweet' or 'normalization'
+  -o <file>     Output model file.
   -h --help     Show this screen.
 """
 from docopt import docopt
@@ -42,7 +43,7 @@ if __name__ == '__main__':
     # train model
     model_type = opts['-m']
     if model_type == 'clf':
-        model = models[model_type](clf=opts['-c'])
+        model = models[model_type](clf=opts['-c'], pipeline=opts['-p'])
     else:
         model = models[model_type]()  # baseline
 
