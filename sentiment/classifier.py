@@ -4,6 +4,9 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
 from sklearn.linear_model import LogisticRegression
 from nltk.corpus import stopwords
+from nltk.tokenize import TweetTokenizer
+from nltk.stem.snowball import SpanishStemmer
+
 
 
 classifiers = {
@@ -11,6 +14,7 @@ classifiers = {
     'mnb': MultinomialNB,
     'svm': LinearSVC,
 }
+
 
 def createDefaultPipeline(clf):
         return Pipeline([
@@ -30,13 +34,24 @@ def createStopwordsPipeline(clf):
             ('clf', classifiers[clf]()),
         ])
 
+def createTweetTokenizerPipeline(clf):
+        tweetTokenizer = TweetTokenizer()    
+        spanishStemmer = SpanishStemmer()
+
+        def tweet_tokenizer(sentence):
+            return [spanishStemmer.stem(token) for token in tweetTokenizer.tokenize(sentence)]
+
+        return Pipeline([
+            ('vect', CountVectorizer(tokenizer=tweet_tokenizer)),
+            ('clf', classifiers[clf]()),
+        ])
 
 class SentimentClassifier(object):
 
     def __init__(self, clf='svm', pipeline='default'):
         """
         clf -- classifying model, one of 'svm', 'maxent', 'mnb' (default: 'svm').
-        pipeline -- type of pipeline to use: 'default', 'binary', 'stopwords'
+        pipeline -- type of pipeline to use: 'default', 'binary', 'stopwords', 'tweet'
 
         """
         self._clf = clf
@@ -47,8 +62,9 @@ class SentimentClassifier(object):
         elif pipeline == 'binary':
             self._pipeline = createBinaryCountPipeline(clf)
         elif pipeline == 'stopwords':
-            self._pipeline = createStopwordsPipeline(clf)    
-
+            self._pipeline = createStopwordsPipeline(clf)
+        elif pipeline == 'tweet':
+            self._pipeline = createTweetTokenizerPipeline(clf)
 
     def fit(self, X, y):
         self._pipeline.fit(X, y)
