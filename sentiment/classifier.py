@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from nltk.corpus import stopwords
 from nltk.tokenize import TweetTokenizer
 from nltk.stem.snowball import SpanishStemmer
+import re
 
 
 
@@ -46,6 +47,30 @@ def createTweetTokenizerPipeline(clf):
             ('clf', classifiers[clf]()),
         ])
 
+
+def createNormalizationPipeline(clf):
+        tweetTokenizer = TweetTokenizer()    
+
+        def normalizator(sentence):
+            urls = r'(?:https?\://t.co/[\w]+)'
+            mentions = r'(?:@[^\s]+)'
+            sentence = re.sub(urls, '', sentence)
+            sentence = re.sub(mentions, '', sentence)
+            
+            vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+
+            for vowel in vowels:
+                sentence = re.sub(r'(' + vowel + ')\1+', r'\1', sentence)
+
+            return sentence
+
+
+        return Pipeline([
+            ('vect', CountVectorizer(tokenizer=normalizator)),
+            ('clf', classifiers[clf]()),
+        ])
+
+
 class SentimentClassifier(object):
 
     def __init__(self, clf='svm', pipeline='default'):
@@ -65,6 +90,9 @@ class SentimentClassifier(object):
             self._pipeline = createStopwordsPipeline(clf)
         elif pipeline == 'tweet':
             self._pipeline = createTweetTokenizerPipeline(clf)
+        elif pipeline == 'normalize':
+            self._pipeline = createNormalizationPipeline(clf)
+
 
     def fit(self, X, y):
         self._pipeline.fit(X, y)
