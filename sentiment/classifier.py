@@ -9,7 +9,6 @@ from nltk.stem.snowball import SpanishStemmer
 import re
 
 
-
 classifiers = {
     'maxent': LogisticRegression,
     'mnb': MultinomialNB,

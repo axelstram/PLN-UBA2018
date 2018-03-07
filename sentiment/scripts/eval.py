@@ -1,11 +1,15 @@
 """Evaulate a Sentiment Analysis model.
 
 Usage:
-  eval.py -i <file> [-f]
+  eval.py -i <file> [-c <clf>] [-f]
   eval.py -h | --help
 
 Options:
   -i <file>     Trained model file.
+  -c <clf>      Classifier to use if the model is a MEMM [default: svm]:
+                  maxent: Maximum Entropy (i.e. Logistic Regression)
+                  svm: Support Vector Machine
+                  mnb: Multinomial Bayes
   -f --final    Use final test set instead of development.
   -h --help     Show this screen.
 """
@@ -16,6 +20,8 @@ from collections import defaultdict
 
 from sentiment.evaluator import Evaluator
 from sentiment.tass import InterTASSReader
+from sentiment.analysis import *
+import random
 
 if __name__ == '__main__':
     opts = docopt(__doc__)
@@ -43,6 +49,20 @@ if __name__ == '__main__':
     evaluator.evaluate(y_true, y_pred)
     evaluator.print_results()
     evaluator.print_confusion_matrix()
+
+    if opts['-c'] == 'maxent':
+        pipeline = model._pipeline
+        vect = pipeline.named_steps['vect']
+        clf = pipeline.named_steps['clf']
+
+        print('Maxent features:')
+        print_maxent_features(vect, clf)
+        print(' ')
+
+        i = random.randint(0, len(X))
+        print('Feature weights for tweet: ' + X[i])
+        print_feature_weights_for_item(vect, clf, X[i])
+
 
     # detailed confusion matrix, for result analysis
     cm_items = defaultdict(list)

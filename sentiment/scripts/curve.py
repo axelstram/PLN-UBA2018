@@ -66,4 +66,5 @@ if __name__ == '__main__':
         # print this data point:
         acc = evaluator.accuracy()
         f1 = evaluator.macro_f1()
-        print('n={}, acc={:2.2f}, f1={:2.2f}'.format(n, acc, f1))
+        #n, acc, f1
+        print('{}, {:2.2f}, {:2.2f}'.format(n, acc, f1))
