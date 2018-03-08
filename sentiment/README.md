@@ -589,7 +589,7 @@ Macro-F1: 41.75%
 Ejercicio 3:
 ============
 
-El clasificador que mejor dio resultados en la mayoría de las métricas fue el MNB aplicando binarización.
+El clasificador que mejor dio resultados en la mayoría de las métricas fue el MNB aplicando binarización. A continuación se muestran nuevamente los resultados en el set de development:
 
 
 Sentiment P:  
