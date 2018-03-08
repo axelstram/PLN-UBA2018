@@ -320,3 +320,265 @@ Macro-F1: 38.35%
 |    NEU     |    29     |     30     |      2       |      8       |
 |    NONE    |    15     |     30     |      4       |      13      |
 
+
+
+
+
+
+# *Normalization:*
+
+## Curvas de aprendizaje:
+
+### Accuracy
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/acc_normalization.png)
+
+### F1
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/f1_normalization.png)
+
+
+## Evaluación sobre Development:
+
+### SVM:
+
+Sentiment P:  
+ - Precision: 34.99% (134/383)
+ - Recall: 85.90% (134/156)
+ - F1: 49.72%
+
+Sentiment N:  
+ - Precision: 52.78% (38/72)
+ - Recall: 17.35% (38/219)
+ - F1: 26.12%
+
+Sentiment NEU:  
+ - Precision: 100.00% (0/0)
+ - Recall: 0.00% (0/69)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 19.61% (10/51)
+ - Recall: 16.13% (10/62)
+ - F1: 17.70%
+
+Accuracy: 35.97% (182/506)  
+Macro-Precision: 51.84%  
+Macro-Recall: 29.84%  
+Macro-F1: 37.88%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    134    |     16     |      0       |      6       |
+|     N      |    152    |     38     |      0       |      29      |
+|    NEU     |    54     |     9      |      0       |      6       |
+|    NONE    |    43     |     9      |      0       |      10      |
+
+
+
+### MNB:
+
+Sentiment P:  
+ - Precision: 44.20% (61/138)
+ - Recall: 39.10% (61/156)
+ - F1: 41.50%
+
+Sentiment N:  
+ - Precision: 46.53% (154/331)
+ - Recall: 70.32% (154/219)
+ - F1: 56.00%
+
+Sentiment NEU:  
+ - Precision: 20.00% (2/10)
+ - Recall: 2.90% (2/69)
+ - F1: 5.06%
+
+Sentiment NONE:  
+ - Precision: 18.52% (5/27)
+ - Recall: 8.06% (5/62)
+ - F1: 11.24%
+
+Accuracy: 43.87% (222/506)  
+Macro-Precision: 32.31%  
+Macro-Recall: 30.10%  
+Macro-F1: 31.16%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    61     |     85     |      0       |      10      |
+|     N      |    49     |     154    |      6       |      10      |
+|    NEU     |    13     |     52     |      2       |      2       |
+|    NONE    |    15     |     40     |      2       |      5       |
+
+
+
+### MaxEnt:
+
+Sentiment P:  
+ - Precision: 38.10% (88/231)
+ - Recall: 56.41% (88/156)
+ - F1: 45.48%
+
+Sentiment N:  
+ - Precision: 49.72% (89/179)
+ - Recall: 40.64% (89/219)
+ - F1: 44.72%
+
+Sentiment NEU:  
+ - Precision: 100.00% (0/0)
+ - Recall: 0.00% (0/69)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 17.71% (17/96)
+ - Recall: 27.42% (17/62)
+ - F1: 21.52%
+
+Accuracy: 38.34% (194/506)  
+Macro-Precision: 51.38%  
+Macro-Recall: 31.12%  
+Macro-F1: 38.76%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    88     |     48     |      0       |      20      |
+|     N      |    84     |     89     |      0       |      46      |
+|    NEU     |    31     |     25     |      0       |      13      |
+|    NONE    |    28     |     17     |      0       |      17      |
+
+
+
+
+
+
+
+
+# *Tweet:*
+
+## Curvas de aprendizaje:
+
+### Accuracy
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/acc_tweet.png)
+
+### F1
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/f1_tweet.png)
+
+
+## Evaluación sobre Development:
+
+### SVM:
+
+Sentiment P:  
+ - Precision: 54.21% (103/190)
+ - Recall: 66.03% (103/156)
+ - F1: 59.54%
+
+Sentiment N:  
+ - Precision: 62.11% (118/190)
+ - Recall: 53.88% (118/219)
+ - F1: 57.70%
+
+Sentiment NEU:  
+ - Precision: 12.00% (6/50)
+ - Recall: 8.70% (6/69)
+ - F1: 10.08%
+
+Sentiment NONE:  
+ - Precision: 31.58% (24/76)
+ - Recall: 38.71% (24/62)
+ - F1: 34.78%
+
+Accuracy: 49.60% (251/506)  
+Macro-Precision: 39.97%  
+Macro-Recall: 41.83%  
+Macro-F1: 40.88%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    103    |     29     |      13      |      11      |
+|     N      |    45     |     118    |      27      |      29      |
+|    NEU     |    28     |     23     |      6       |      12      |
+|    NONE    |    14     |     20     |      4       |      24      |
+
+
+
+### MNB:
+
+Sentiment P:  
+ - Precision: 49.80% (126/253)
+ - Recall: 80.77% (126/156)
+ - F1: 61.61%
+
+Sentiment N:  
+ - Precision: 60.80% (152/250)
+ - Recall: 69.41% (152/219)
+ - F1: 64.82%
+
+Sentiment NEU:  
+ - Precision: 0.00% (0/1)
+ - Recall: 0.00% (0/69)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 100.00% (2/2)
+ - Recall: 3.23% (2/62)
+ - F1: 6.25%
+
+Accuracy: 55.34% (280/506)  
+Macro-Precision: 52.65%  
+Macro-Recall: 38.35%  
+Macro-F1: 44.38%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    126    |     30     |      0       |      0       |
+|     N      |    67     |     152    |      0       |      0       |
+|    NEU     |    35     |     34     |      0       |      0       |
+|    NONE    |    25     |     34     |      1       |      2       |
+
+
+
+### MaxEnt:
+
+Sentiment P:  
+ - Precision: 54.63% (118/216)
+ - Recall: 75.64% (118/156)
+ - F1: 63.44%
+
+Sentiment N:  
+ - Precision: 66.35% (138/208)
+ - Recall: 63.01% (138/219)
+ - F1: 64.64%
+
+Sentiment NEU:  
+ - Precision: 15.79% (3/19)
+ - Recall: 4.35% (3/69)
+ - F1: 6.82%
+
+Sentiment NONE:  
+ - Precision: 26.98% (17/63)
+ - Recall: 27.42% (17/62)
+ - F1: 27.20%
+
+Accuracy: 54.55% (276/506)  
+Macro-Precision: 40.94%  
+Macro-Recall: 42.61%  
+Macro-F1: 41.75%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    118    |     21     |      7       |      10      |
+|     N      |    47     |     138    |      7       |      27      |
+|    NEU     |    33     |     24     |      3       |      9       |
+|    NONE    |    18     |     25     |      2       |      17      |
+
+
+
