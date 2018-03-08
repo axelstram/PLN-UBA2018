@@ -582,3 +582,89 @@ Macro-F1: 41.75%
 
 
 
+
+
+
+
+Ejercicio 3:
+============
+
+El clasificador que mejor dio resultados en la mayoría de las métricas fue el MNB aplicando binarización.
+
+
+Sentiment P:  
+ - Precision: 48.11% (127/264)
+ - Recall: 81.41% (127/156)
+ - F1: 60.48%
+
+Sentiment N:  
+ - Precision: 59.17% (142/240)
+ - Recall: 64.84% (142/219)
+ - F1: 61.87%
+
+Sentiment NEU:  
+ - Precision: 100.00% (0/0)
+ - Recall: 0.00% (0/69)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 50.00% (1/2)
+ - Recall: 1.61% (1/62)
+ - F1: 3.12%
+
+Accuracy: 53.36% (270/506)  
+Macro-Precision: 64.32%  
+Macro-Recall: 36.97%  
+Macro-F1: 46.95%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    127    |     29     |      0       |      0       |
+|     N      |    76     |     142    |      0       |      1       |
+|    NEU     |    37     |     32     |      0       |      0       |
+|    NONE    |    24     |     37     |      0       |      1       |
+
+
+
+
+Se procedió a evaluar este clasificador con el conjunto de datos de test, obteniendo los siguientes resultados:
+
+
+
+Sentiment P:  
+ - Precision: 49.26% (535/1086)
+ - Recall: 83.33% (535/642)
+ - F1: 61.92%
+
+Sentiment N:  
+ - Precision: 61.20% (489/799)
+ - Recall: 63.75% (489/767)
+ - F1: 62.45%
+
+Sentiment NEU:  
+ - Precision: 0.00% (0/5)
+ - Recall: 0.00% (0/216)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 22.22% (2/9)
+ - Recall: 0.73% (2/274)
+ - F1: 1.41%
+
+Accuracy: 54.03% (1026/1899)  
+Macro-Precision: 33.17%  
+Macro-Recall: 36.95%  
+Macro-F1: 34.96%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    535    |     99     |      2       |      6       |
+|     N      |    276    |     489    |      1       |      1       |
+|    NEU     |    120    |     96     |      0       |      0       |
+|    NONE    |    155    |     115    |      2       |      2       |
+
+
+
+Lo que se pudo observar es que el Macro-Recall (es decir, el true positive rate) se mantuvo, mientras que la Macro-Precision y Macro-F1 cayeron significativamente, lo cuál indica que aumentó el número de false positives.
