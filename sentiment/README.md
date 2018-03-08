@@ -176,9 +176,9 @@ P:
 * triste portada urdangarin griñan culpa ([-1.64422166 -1.59682195 -1.36776681 -1.35668773 -1.35352684])
 * genial homenaje gracias felicidades enhorabuena ([ 1.9467743   1.99712246  2.24202844  2.32473932  2.58299904])
 
-##Tweet and feature weights:
+## Tweet and feature weights:
 
-`@lorzagirl oye, que mi madre se le cortó la leche  y mirame, 1,85 XD, aunque algo enfermizo de pequeño. Ahora, lo de la leche X...`
+Tweet: `@lorzagirl oye, que mi madre se le cortó la leche  y mirame, 1,85 XD, aunque algo enfermizo de pequeño. Ahora, lo de la leche X...`
 
 |   Token   |                         Weights
 |:---------:|:---------------------------------------------------------------------:|
