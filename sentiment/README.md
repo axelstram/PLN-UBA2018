@@ -51,14 +51,17 @@ Sentiment P:
  - Precision: 50.50% (101/200)  
  - Recall: 64.74% (101/156)  
  - F1: 56.74%  
+
 Sentiment N:  
  - Precision: 61.83% (115/186)  
  - Recall: 52.51% (115/219)  
- - F1: 56.79%  
+ - F1: 56.79%
+
 Sentiment NEU:  
  - Precision: 17.65% (6/34)  
  - Recall: 8.70% (6/69)  
  - F1: 11.65%  
+ 
 Sentiment NONE:  
  - Precision: 22.09% (19/86)  
  - Recall: 30.65% (19/62)  
