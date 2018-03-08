@@ -34,35 +34,35 @@ Para este ejercicio se modificaron los archivos classifier.py, curve.py y train.
 
 * Curvas de aprendizaje:
 
-## *Accuracy
+# Accuracy
 
 ![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/acc_stopwords.png)
 
-*F1
+# F1
 
 ![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/f1_stopwords.png)
 
 
 * Evaluación sobre Development:
 
-SVM:
+# SVM:
 
 Sentiment P:  
-  Precision: 50.50% (101/200)  
-  Recall: 64.74% (101/156)  
-  F1: 56.74%  
+ - Precision: 50.50% (101/200)  
+ - Recall: 64.74% (101/156)  
+ - F1: 56.74%  
 Sentiment N:  
-  Precision: 61.83% (115/186)  
-  Recall: 52.51% (115/219)  
-  F1: 56.79%  
+ - Precision: 61.83% (115/186)  
+ - Recall: 52.51% (115/219)  
+ - F1: 56.79%  
 Sentiment NEU:  
-  Precision: 17.65% (6/34)  
-  Recall: 8.70% (6/69)  
-  F1: 11.65%  
+ - Precision: 17.65% (6/34)  
+ - Recall: 8.70% (6/69)  
+ - F1: 11.65%  
 Sentiment NONE:  
-  Precision: 22.09% (19/86)  
-  Recall: 30.65% (19/62)  
-  F1: 25.68%  
+ - Precision: 22.09% (19/86)  
+ - Recall: 30.65% (19/62)  
+ - F1: 25.68%  
 
 Accuracy: 47.63% (241/506)  
 Macro-Precision: 38.02%  
