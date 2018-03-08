@@ -30,22 +30,22 @@ Ejercicio 2:
 Para este ejercicio se modificaron los archivos classifier.py, curve.py y train.py para que tomen un parámetro adicional '-p', el cuál representa el tipo de pipelina a utilizar: 'default', 'binary', 'stopwords', 'tweet' o 'normalization'.
 
 
-### *Stopwords:*
+# *Stopwords:*
 
-* Curvas de aprendizaje:
+## Curvas de aprendizaje:
 
-# Accuracy
+### Accuracy
 
 ![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/acc_stopwords.png)
 
-# F1
+### F1
 
 ![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/f1_stopwords.png)
 
 
-* Evaluación sobre Development:
+## Evaluación sobre Development:
 
-# SVM:
+### SVM:
 
 Sentiment P:  
  - Precision: 50.50% (101/200)  
@@ -61,7 +61,7 @@ Sentiment NEU:
  - Precision: 17.65% (6/34)  
  - Recall: 8.70% (6/69)  
  - F1: 11.65%  
- 
+
 Sentiment NONE:  
  - Precision: 22.09% (19/86)  
  - Recall: 30.65% (19/62)  
