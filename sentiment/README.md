@@ -190,3 +190,133 @@ Tweet: `@lorzagirl oye, que mi madre se le cortó la leche  y mirame, 1,85 XD, a
 |  oye      |          [-0.15031295  0.11646489  0.16988609 -0.01069041]            |
 |  pequeño  |          [ 0.6629558  -0.45229228 -0.53835658 -0.04209061]            |
 |  xd       |          [-0.28428317  0.7002109   0.18759896 -0.40002533]            |
+
+
+
+
+
+
+# *Binary:*
+
+## Curvas de aprendizaje:
+
+### Accuracy
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/acc_binary.png)
+
+### F1
+
+![alt text](https://github.com/axelstram/PLN-UBA2018/blob/practico3/sentiment/images/f1_binary.png)
+
+
+## Evaluación sobre Development:
+
+### SVM:
+
+Sentiment P:  
+ - Precision: 54.55% (108/198)
+ - Recall: 69.23% (108/156)
+ - F1: 61.02% 
+
+Sentiment N:  
+ - Precision: 63.21% (122/193)
+ - Recall: 55.71% (122/219)
+ - F1: 59.22%
+
+Sentiment NEU:  
+ - Precision: 15.79% (6/38)
+ - Recall: 8.70% (6/69)
+ - F1: 11.21%  
+
+Sentiment NONE:  
+ - Precision: 24.68% (19/77)
+ - Recall: 30.65% (19/62)
+ - F1: 27.34%  
+
+Accuracy: 50.40% (255/506)  
+Macro-Precision: 39.56%  
+Macro-Recall: 41.07%  
+Macro-F1: 40.30%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    108    |     23     |      10      |      15      |
+|     N      |    52     |     122    |      15      |      30      |
+|    NEU     |    29     |     21     |      6       |      13      |
+|    NONE    |    9      |     27     |      7       |      19      |
+
+
+
+### MNB:
+
+Sentiment P:  
+ - Precision: 48.11% (127/264)
+ - Recall: 81.41% (127/156)
+ - F1: 60.48%
+
+Sentiment N:  
+ - Precision: 59.17% (142/240)
+ - Recall: 64.84% (142/219)
+ - F1: 61.87%
+
+Sentiment NEU:  
+ - Precision: 100.00% (0/0)
+ - Recall: 0.00% (0/69)
+ - F1: 0.00%
+
+Sentiment NONE:  
+ - Precision: 50.00% (1/2)
+ - Recall: 1.61% (1/62)
+ - F1: 3.12%
+
+Accuracy: 53.36% (270/506)  
+Macro-Precision: 64.32%  
+Macro-Recall: 36.97%  
+Macro-F1: 46.95%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    127    |     29     |      0       |      0       |
+|     N      |    76     |     142    |      0       |      1       |
+|    NEU     |    37     |     32     |      0       |      0       |
+|    NONE    |    24     |     37     |      0       |      1       |
+
+
+
+### MaxEnt:
+
+Sentiment P:  
+ - Precision: 51.98% (118/227)
+ - Recall: 75.64% (118/156)
+ - F1: 61.62%
+
+Sentiment N:  
+ - Precision: 58.88% (126/214)
+ - Recall: 57.53% (126/219)
+ - F1: 58.20%
+
+Sentiment NEU:  
+ - Precision: 12.50% (2/16)
+ - Recall: 2.90% (2/69)
+ - F1: 4.71%
+
+Sentiment NONE:  
+ - Precision: 26.53% (13/49)
+ - Recall: 20.97% (13/62)
+ - F1: 23.42%
+
+Accuracy: 51.19% (259/506)  
+Macro-Precision: 37.47%  
+Macro-Recall: 39.26%  
+Macro-F1: 38.35%  
+
+
+| 			 | 	   P     |     N      |     NEU      |     NONE     |
+|:----------:|:---------:|:----------:|:------------:|:------------:|
+|     P      |    118    |     28     |      4       |      6       |
+|     N      |    65     |     126    |      6       |      22      |
+|    NEU     |    29     |     30     |      2       |      8       |
+|    NONE    |    15     |     30     |      4       |      13      |
+
